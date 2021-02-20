@@ -1,0 +1,89 @@
+
+
+
+C:\Users\주말반\Desktop\주말대비-김재환\github\vue
+
+C:/Users/주말반/Desktop/주말대비-김재환/github\vue
+
+//////깃설정////////////
+
+
+주말반@1304-15 MINGW64 ~
+$ pwd
+/c/Users/주말반
+
+주말반@1304-15 MINGW64 ~
+$ cd C:/Users/주말반/Desktop/주말대비-김재환/github/vue
+
+주말반@1304-15 MINGW64 ~/Desktop/주말대비-김재환/github/vue
+$ dir/w
+bash: dir/w: No such file or directory
+
+주말반@1304-15 MINGW64 ~/Desktop/주말대비-김재환/github/vue
+$ ls
+02-20/
+
+주말반@1304-15 MINGW64 ~/Desktop/주말대비-김재환/github/vue
+$ git init
+Initialized empty Git repository in C:/Users/주말반/Desktop/주말대비-김재환/github/vue/.git/
+
+주말반@1304-15 MINGW64 ~/Desktop/주말대비-김재환/github/vue (master)
+$ ls
+02-20/
+
+주말반@1304-15 MINGW64 ~/Desktop/주말대비-김재환/github/vue (master)
+$ ls -al
+total 4
+drwxr-xr-x 1 주말반 197121 0 Feb 20 12:30 ./
+drwxr-xr-x 1 주말반 197121 0 Feb 20 12:10 ../
+drwxr-xr-x 1 주말반 197121 0 Feb 20 12:30 .git/
+drwxr-xr-x 1 주말반 197121 0 Feb 20 12:10 02-20/
+
+주말반@1304-15 MINGW64 ~/Desktop/주말대비-김재환/github/vue (master)
+$
+
+///////환경설정/////////////
+원격접속 필요한게 : 사용자이메일 과 사용자 이름 
+
+사용자(user) 이메일(email)
+$ git config user.email 'javakjh@naver.com'
+
+사용자(user) 이름(name)
+$ git config user.name 'javakjh'
+
+//깃허브 repository(저장소) 원격 추가(add)접속
+$ git remote add origin https://github.com/javakjh/vue.git
+
+//확인
+$ git remote -v
+origin  https://github.com/javakjh/vue.git (fetch)
+origin  https://github.com/javakjh/vue.git (push)
+
+//파일 업로드(push)
+3-1 
+////////////////////////////////
+업로드할 파일 선택
+스테이징(올릴 파일을 스테이지에 올린다.)
+git add .
+
+3-2
+///////////////////////////////
+커밋한다.(commit)
+검증 수정된거 삭제된거 추가된거 이런것들을 검사
+
+$ git commit -m '2021-02-20 vs code 젠코딩 '
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        02-20/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+3-3
+///
+최종 업로드 push
+
+git push origin master 
