@@ -71,7 +71,7 @@ git add .
 커밋한다.(commit)
 검증 수정된거 삭제된거 추가된거 이런것들을 검사
 
-$ git commit -m '2021-02-20 vs code 젠코딩 '
+$ git commit -m 'upload'
 On branch master
 
 Initial commit
@@ -87,3 +87,12 @@ nothing added to commit but untracked files present (use "git add" to track)
 최종 업로드 push
 
 git push origin master 
+
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (7/7), 88.89 KiB | 5.23 MiB/s, done.
+Total 7 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/javakjh/vue.git
+ * [new branch]      master -> master
