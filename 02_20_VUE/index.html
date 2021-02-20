@@ -12,10 +12,17 @@
     <div id="wrap">
     <!-- 마크업 - DOM View-->
     <div id="app">
-        <h1>자바스크립트 프레임 워크 Vue.js 공부하기 {{txt}}</h1>
-        <h2>뷰 데이터 속성 바인딩 하기 {{msg}} 머스테시 안에 바인딩 속성 넣기</h2>
+        <h1>자바스크립트 프레임 워크 Vue.js 공부하기 </h1>
+        <p>{{txt}}</p>
+        <!-- h2를 클릭하여 msg데이터 속성을 변경하는 이벤트 실행 
+        v-on:click='(메서드)함수호출 ggoggo'메서드 호출하여 msg속성 값을 변경 바인딩한다.
+        v-on: 디렉티브 @사용 가능
+        v-bind: 디렉티브 속성지정 : -->
+        <h2 @click='ggoggo'>뷰 데이터 속성 바인딩 하기  머스테시 안에 바인딩 속성 넣기</h2>
+        <p>{{msg}}</p>
     </div>
     <hr>
+
 
     <!-- 스크립트 뷰 모델(View Model) + 모델(Mode)--> 
     <script>
@@ -25,17 +32,26 @@
             data:{
                 msg:'자바스크립트 data',
                 txt:'JAVASCRIPT VUE.JS'
+            },
+            methods:{
+                ggoggo:function(){//메서드 함수 내에서는 속성값 대입연산자 = 사용
+                    alert('메서드 호출 실행');
+                    this.msg='VUE.JS'; //msg속성변경
+                    this.txt='더조은아카데미 KJH'
+                }
             }
         });
     </script>
 
     <div id="header">
         <h1>MVVM 모델링 </h1>
-        <h2>{{msg}}</h2>
+        <h2 @click='ggagga'>{{msg}}</h2>
         <p>{{bibo}}</p>
         <hr>
     </div>
-</div>
+
+
+    </div>
     <script>
         var headerObj = new Vue({
             el:'#header',
@@ -44,10 +60,16 @@
                     msg:'MVVM 패턴' ,
                     bibo : 46
                 }
+            },
+            methods:{
+                ggagga: function(){//함수 안에서는 끝처리를 세미콜론
+                    this.msg='대한민국 !!!';
+                    this.bibo=1000000;
+                }
             }
         });
     </script>
-
+    
     <!-- 스타일 -->
     <style>
         #wrap {width: 1000px; margin:0 auto;background: #f0f0f0;padding: 100px 0;}
