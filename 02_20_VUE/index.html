@@ -50,7 +50,12 @@
         <hr>
     </div>
 
-
+    <div id="app2">
+        <h2 @click='test1'>exe1</h2>
+        <p>{{msg2}}</p>
+        <h2 @click='test2'>exe2</h2>
+        <p>{{txt2}}</p>
+    </div>
     </div>
     <script>
         var headerObj = new Vue({
@@ -69,7 +74,29 @@
             }
         });
     </script>
-    
+     
+
+        
+
+
+    <script>
+
+        var obj = new Vue({
+            el:'#app2',
+            data:{
+                msg2:'자바스크립트 data',
+                txt2:'JAVASCRIPT VUE.JS'
+            },
+            methods:{
+                test1:function(){
+                    this.msg2='CHANGE!!!!';
+                },
+                test2:function(){
+                this.txt2="change2!!!";
+                }
+            }
+        });
+    </script>
     <!-- 스타일 -->
     <style>
         #wrap {width: 1000px; margin:0 auto;background: #f0f0f0;padding: 100px 0;}
