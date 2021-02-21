@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 인스턴스 만들기 & 자바스크립트 클래스(객체와 함수)</title>
+    <style>
+        table{width: 1000px;margin: 0 auto;}
+        table th,td{border:1px solid #ccc;height: 50px;text-align: center;}
+        table#table td:nth-child(2){text-align: left;}
+    </style>
+</head>
+<body>
+    
+    <h1>리터럴 방식 클래스 인스턴스 만들기</h1>
+
+    <h2>주소부</h2>
+    <table id='table'>
+       
+       
+    </table>
+
+
+    <h2>성적표</h2>
+    <table id='sungjuk'>
+       
+       
+    </table>
+
+    <h2>주소-성적표</h2>
+    <table id='ad_su'>
+       
+       
+    </table>
+    <script>
+        // var app = {}             //리터럴 방식
+        // var app = new Object();  //생성자 방식  객체
+        // var app = []             //리터럴 방식  배열
+        // var app = new Array();   //생성자 방식  배열 객체
+
+        //인스턴스(객체) 생성
+        var vue = {
+            cnt:0 ,                   //프로퍼티(멤버변수)
+            el : '<h1>프로퍼티(멤버변수)탬플릿</h1>',
+            method : ['피자','닭칼국수','김밥','라면','토마토 스파케티'],
+            main : {
+                student :[
+                    {번호:1, 이름:'이순신', kor:100,eng:90,mat:95},     //인덱스[0] 
+                    {번호:2, 이름:'박순신', kor:090,eng:95,mat:90},     //인덱스[1]
+                    {번호:3, 이름:'강순신', kor:090,eng:80,mat:95},
+                    {번호:4, 이름:'홍순신', kor:090,eng:70,mat:90},
+                    {번호:5, 이름:'조순신', kor:080,eng:85,mat:95}      //인덱스[4]
+                ],
+                address:[
+                    {이름:'이순신',주소:'서울시 서초구 서초동 송림빌딩'},
+                    {이름:'박순신',주소:'서울시 서초구 서초동 vue빌딩'},
+                    {이름:'강순신',주소:'서울시 서초구 서초동 java빌딩'},
+                    {이름:'홍순신',주소:'서울시 서초구 서초동 보디빌딩'},
+                    {이름:'조순신',주소:'서울시 서초구 서초동 js빌딩'}
+                ]
+            },
+            init:function(){    //메서드(멤버함수)
+                //this 인스턴스(객체)
+                this.cnt = 500;
+                this.el+='<h2>프로퍼티(멤버변수)에 템플릿 내용 추가</h2>';  //el=el+내용
+                console.log(this.cnt);
+                console.log(this.el);
+            },
+            compute:function(){
+                var txt = ''; //출력내용 보관하는 변수
+                var $table = document.querySelector('#table');
+
+                txt = '<tr><th>이름</th><th>주소</th></tr>';
+                 //주소테이블에 데이터 출력
+                 //반복처리
+                //자바스크립트 객체 배열처리
+                this.main.address.forEach(function(el,index,arr){
+                    console.log('배열처리',el,index,arr);
+                    txt += '<tr><td>'+el.이름+'</td><td>'+el.주소+'</td></tr>';
+                });
+                
+                $table.innerHTML=txt; 
+                //성적표테이블에 데이터 출력
+                var txt2 = '';                 
+                var $sungjuk = document.querySelector('#sungjuk');
+                txt2 = '<tr><th>번호</th><th>이름</th><th>KOR</th><th>ENG</th><th>MAT</th></tr>';               
+                
+                this.main.student.forEach(function(el,idx,arr){
+                    console.log('배열처리',el,idx,arr);
+                    txt2 += '<tr><td>'+el.번호+'</td><td>'+el.이름+'</td><td>'+el.kor+'</td><td>'+el.eng+'</td><td>'+el.mat+'</td></tr>';
+                });            
+                $sungjuk.innerHTML=txt2; 
+
+                var txt3='';
+                var $ad_su=document.querySelector('#ad_su');
+                txt3='<tr><th>번호</th><th>이름</th><th>주소</th><th>성적합</th>';
+                this.main.forEach(function(el,idx,arr){
+                    txt3+='<tr><td>'+el.student.번호+'</td><td>'+el.student.이름+'</td><td>'+el.address.주소+'</td><td>'+(el.student.eng+el.student.kor+el.student.mat)+'</td></tr>'
+                })
+                $ad_su.innerHTML=txt3; 
+                //성적표
+                console.log(this.method);
+                console.log(this.method[0]);
+                console.log(this.method[1]);
+                console.log(this.method[2]);
+                console.log(this.method[3]);
+                console.log(this.method[4]);
+
+                //주소부
+                console.log(this.main.address[3].이름);
+                console.log(this.main.address[3].주소);
+
+
+             
+                console.log(this.main);                             //메인 프로퍼티(멤버변수) 전체
+                console.log(this.main.student);                     //메인.student   인스턴스.프로퍼티               
+                console.log(this.main.student[4]);                  //인스턴스.프로퍼티.프로퍼티[]
+                console.log(this.main.student[4].이름);             //인스턴스.프로퍼티.프로퍼티[].
+                
+                var tot = this.main.student[3].kor+this.main.student[3].eng+this.main.student[3].mat;
+                console.log('총점 : '+tot);                         //ECMA Script 5  [ES5]
+                console.log(` 총점 : ${tot}  `);                     //ECMA Script 6  [ES6]
+            },
+            run: function(){    //인스턴스 전체 실행 메서드
+                this.init();
+                this.compute();
+            }
+
+        }   //인스턴스(객체) 끝
+
+        //vue.init();     //vue 인스턴스 안에 init이라는 메서드(멤버함수) 실행
+        //vue.compute();  //vue 인스턴스 안에 init이라는 메서드(멤버함수) 저장
+
+        vue.run();
+
+    </script>
+</body>
+</html>

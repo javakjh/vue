@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 인스턴스 만들기 & 자바스크립트 클래스(객체와 함수)</title>
+</head>
+<body>
+
+    <h1>인스턴스 만들기</h1>
+<script>
+    var testObj = {
+
+        cnt : 0,
+        el : '테스트',
+        arr : ['arr1','arr2','arr3','arr4','arr5'],
+        arr2 : {
+            language:[{번호:1,이름:'C'},{번호:2,이름:'java'},{번호:3,이름:'python'}],
+            tool:[{num:1,name:'vis-code'},
+            {num:2,name:'eclipse'},
+            {num:3,name:'intellij'},
+        ]
+        },
+        test01 : function(){
+            this.cnt=this.cnt+5;
+            console.log(this.cnt);
+        },
+        test02 : function(){
+            this.el+=' 추가 내용 ';
+            console.log(this.el);
+        },
+        test03 : function(){
+            console.log(this.arr);
+            console.log(this.arr[3]);
+        },
+        test04 : function(){
+            console.log(this.arr2.language);
+            console.log(this.arr2.language[0]);
+            console.log(this.arr2.tool[2].name);
+        },
+        run:function(){
+            this.test01();
+            this.test02();
+            this.test03();
+            this.test04();
+        }
+
+    }
+    testObj.run();
+
+</script>
+</body>
+</html>

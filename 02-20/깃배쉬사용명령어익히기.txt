@@ -3,7 +3,7 @@
 
 C:\Users\주말반\Desktop\주말대비-김재환\github\vue
 
-C:/Users/주말반/Desktop/주말대비-김재환/github\vue
+C:/Users/주말반/Desktop/주말대비-김재환/github/vue
 
 //////깃설정////////////
 
@@ -62,7 +62,6 @@ origin  https://github.com/javakjh/vue.git (push)
 //파일 업로드(push)
 3-1 
 ////////////////////////////////
-업로드할 파일 선택
 스테이징(올릴 파일을 스테이지에 올린다.)
 git add .
 
@@ -70,29 +69,12 @@ git add .
 ///////////////////////////////
 커밋한다.(commit)
 검증 수정된거 삭제된거 추가된거 이런것들을 검사
-
 $ git commit -m 'upload'
-On branch master
-
-Initial commit
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        02-20/
-
-nothing added to commit but untracked files present (use "git add" to track)
 
 3-3
-///
+/////////////////////////////////////////
 최종 업로드 push
-
 git push origin master 
 
-Enumerating objects: 7, done.
-Counting objects: 100% (7/7), done.
-Delta compression using up to 4 threads
-Compressing objects: 100% (4/4), done.
-Writing objects: 100% (7/7), 88.89 KiB | 5.23 MiB/s, done.
-Total 7 (delta 0), reused 0 (delta 0), pack-reused 0
-To https://github.com/javakjh/vue.git
- * [new branch]      master -> master
+<다른곳에서 수정 작업후 다시 최신정보 받기 위해서>
+git pull origin master

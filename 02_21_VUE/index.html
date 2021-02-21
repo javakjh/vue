@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue.js 처음 코딩하기</title>
+
+    <script src="./vue/lib/vue.js"></script>
+</head>
+<body>
+    <div id="wrap">
+    <!-- 마크업 - DOM View-->
+    <div id="app">
+        <h1>자바스크립트 프레임 워크 Vue.js 공부하기 </h1>
+        <p>{{txt}}</p>
+        <!-- h2를 클릭하여 msg데이터 속성을 변경하는 이벤트 실행 
+        v-on:click='(메서드)함수호출 ggoggo'메서드 호출하여 msg속성 값을 변경 바인딩한다.
+        v-on: 디렉티브 @사용 가능
+        v-bind: 디렉티브 속성지정 : -->
+        <h2 @click='ggoggo'>뷰 데이터 속성 바인딩 하기  머스테시 안에 바인딩 속성 넣기</h2>
+        <p>{{msg}}</p>
+    </div>
+    <hr>
+
+
+    <!-- 스크립트 뷰 모델(View Model) + 모델(Mode)--> 
+    <script>
+        //뷰 생성자방식
+        var obj = new Vue({
+            el:'#app',
+            data:{
+                msg:'자바스크립트 data',
+                txt:'JAVASCRIPT VUE.JS'
+            },
+            methods:{
+                ggoggo:function(){//메서드 함수 내에서는 속성값 대입연산자 = 사용
+                    alert('메서드 호출 실행');
+                    this.msg='VUE.JS'; //msg속성변경
+                    this.txt='더조은아카데미 KJH'
+                }
+            }
+        });
+    </script>
+
+    <div id="header">
+        <h1>MVVM 모델링 </h1>
+        <h2 @click='ggagga'>{{msg}}</h2>
+        <p>{{bibo}}</p>
+        <hr>
+    </div>
+
+    <div id="app2">
+        <h2 @click='test1'>exe1</h2>
+        <p>{{msg2}}</p>
+        <h2 @click='test2'>exe2</h2>
+        <p>{{txt2}}</p>
+    </div>
+    </div>
+    <script>
+        var headerObj = new Vue({
+            el:'#header',
+            data:function(){//메서드 방식은 반드시 return { 속성 : 속성값}
+                return {            
+                    msg:'MVVM 패턴' ,
+                    bibo : 46
+                }
+            },
+            methods:{
+                ggagga: function(){//함수 안에서는 끝처리를 세미콜론
+                    this.msg='대한민국 !!!';
+                    this.bibo=1000000;
+                }
+            }
+        });
+    </script>
+     
+
+        
+
+
+    <script>
+
+        var obj = new Vue({
+            el:'#app2',
+            data:{
+                msg2:'자바스크립트 data',
+                txt2:'JAVASCRIPT VUE.JS'
+            },
+            methods:{
+                test1:function(){
+                    this.msg2='CHANGE!!!!';
+                },
+                test2:function(){
+                this.txt2="change2!!!";
+                }
+            }
+        });
+    </script>
+    <!-- 스타일 -->
+    <style>
+        #wrap {width: 1000px; margin:0 auto;background: #f0f0f0;padding: 100px 0;}
+        #app {text-align: center;}
+        #header {text-align: center;}
+        h2,p {color: #39b;background: #ddd;display: inline-flex;padding: 10px 20px;font-size: 30px;font-weight: normal;}
+    </style>
+</body>
+</html>
