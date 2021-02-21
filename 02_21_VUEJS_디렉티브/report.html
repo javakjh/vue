@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디렉티브 v-for반복문 연습</title>
+    <script src="./vue/lib/vue.js"></script>
+    <style>
+        table {width:600px ; margin:0 auto ; border-collapse: collapse;}
+        table th {background: #f0f0f0;}
+        table th,td {border:1px solid #ccc;text-align: center ;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>성적표</h1>
+        <table>
+            <tr><th>번호</th><th>이름</th><th>KOR</th><th>ENG</th><th>MAT</th></th></tr>
+            <tr v-for='el in student'><td>{{el.번호}}</td><td>{{el.이름}}</td><td>{{el.kor}}</td><td>{{el.eng}}</td><td>{{el.mat}}</td></tr>
+        </table>
+        
+    </div>
+    <script>
+        var obj = new Vue({
+            el:"#app",
+            data:{
+                student :[
+                    {번호:1, 이름:'이순신', kor:100,eng:90,mat:95},     //인덱스[0] 
+                    {번호:2, 이름:'박순신', kor:090,eng:95,mat:90},     //인덱스[1]
+                    {번호:3, 이름:'강순신', kor:090,eng:80,mat:95},
+                    {번호:4, 이름:'홍순신', kor:090,eng:70,mat:90},
+                    {번호:5, 이름:'조순신', kor:080,eng:85,mat:95}      //인덱스[4]
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
