@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디렉티브 v-for 반복문 & v-on:이벤트 @click 뷰 라이프사이클 & 제이쿼리 사용</title>
+    
+    <!-- 오픈소스  -->
+    <script src="./js/lib/jquery.min.js"></script>
+    <script src="./vue/lib/vue.js"></script>
+
+    <style>
+       
+        #header {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- html 영역 -->
+    <div id="header">
+        <h1 class='h1-btn'>헤더영역 라이프 사이클</h1>
+        <h2>머스테시 표시안에 데이터 속성(멤버변수)에 출력{{msg}}</h2>
+        <!-- <p onclick='product();'>제품 가격은 {{num}}입니다.</p> -->
+        <p v-on:click='price'>제품 가격은 {{num}}입니다.</p>
+        <p v-on:key='price'>제품 가격은 {{num}}입니다.</p>
+        <p @click='product'>제품 가격은 {{num}}입니다.</p>  <!--v-on: 디렉티브를 '@'를 대체사용 -->
+    </div>
+    
+
+
+    <!-- 스크립트 영역 -->
+    <script>
+
+        const header = new Vue({            //뷰의 인스턴스 생성
+            el:'#header',
+            data:{
+                msg:'뷰 인스턴스 데이터 메시지',
+                num: 590
+            },
+            methods:{
+                //메소드 관리해주는 속성
+
+                //메소드 ==리터럴 함수 ==익명함수
+                product :  function(){
+                    // header.num=100,  this는 const header를 가리킴
+                    let that= this;
+                    that.num+=100;
+                    this.msg = '데이터 메시지 수정';
+                },
+                price : function(){
+                    this.num += 100000 ;
+                }
+            },
+            beforeCreate:function(){
+                console.log('뷰 생명주기 beforeCreate');
+            },
+            created:function(){
+                console.log('뷰 생명주기 created')
+            },
+            beforeMounted:function(){
+                console.log('뷰 생명주기 beforeMounte');
+            },
+            mounted:function(){
+                let that =this;
+                console.log('뷰 생명주기 mounted 제이쿼리와 라이브러리 사용 가능합니다.');
+                $('.h1-btn').on({
+                    click:function(){
+                        that.num+=590;
+                        console.log('mouned 제이쿼리 버튼 클릭이벤트 '+that.num);
+                    },
+                    focus:function(){
+                        console.log('focusin');
+                    },
+                    mouseenter:function(){
+                        console.log('mouseenter');
+                    }
+                });
+                //마운트(Mounted) 단계에서 제이쿼리 사용 가능
+                // $('.h1-btn')
+                //     .on('click',function(){
+                //         alert('제이쿼리 클릭 이벤트');
+                //     })
+                //     .on('focusin',function(){
+                //         alert('제이쿼리 클릭 이벤트');
+                //     });
+            },
+            beforeUpdate:function(){
+                console.log('뷰 생명주기 beforeUpdate 실제 업데이트 수정은 여기서');
+            },
+            updated:function(){
+                console.log('뷰 생명주기 updated 여기는 수정된 결과만');
+            },
+            beforeDestory(){
+                console.log('뷰 생명주기 beforeDestory');
+            },
+            destoryed(){
+                console.log('뷰 생명주기 destoryed');
+            }
+        });
+
+    </script>
+
+
+
+   
+
+
+</body>
+</html>
