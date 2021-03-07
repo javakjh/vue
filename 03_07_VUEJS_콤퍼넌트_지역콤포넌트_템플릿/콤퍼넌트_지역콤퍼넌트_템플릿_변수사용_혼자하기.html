@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콤퍼넌트_지역콤퍼넌트_템플릿</title>
+    
+    <!-- 오픈소스  -->
+    <script src="./js/lib/jquery.min.js"></script>    
+    <script src="./vue/lib/vue.js"></script>
+
+    <style>
+      #wrapper {width:1200px;margin:0 auto;text-align:center;background:#f0f0f0;}
+      #wrapper #header h1 {color:#000;}
+      #wrapper #header h2 {color:#279;}
+      #wrapper #header h2 mark {background:#ad5;}
+    </style>
+
+</head>
+<body>
+<div id="wrap">
+    <div id="ex">
+        <ex01-component></ex01-component>
+        <ex02-component></ex02-component>
+        <ex03-component></ex03-component>
+    </div>
+
+    <script>
+
+        var ex01Component = {
+            template:'<h2>ex01지역콤포넌트 생성</h2>'
+        }
+
+        var ex02Component = {
+            template:'<h2>ex02지역콤포넌트 생성</h2>'
+        }
+
+        var ex03Component = {
+            template:'<h2>ex03지역콤포넌트 생성</h2>'
+        }
+
+        var kjhVue = new Vue({
+            el: '#ex',
+            data:{
+
+            },
+            components:{
+                'ex01-component' : ex01Component,
+                'ex02-component' : ex02Component,
+                'ex03-component' : ex03Component
+            }
+        });
+    </script>
+</div>
+</body>
+</html>

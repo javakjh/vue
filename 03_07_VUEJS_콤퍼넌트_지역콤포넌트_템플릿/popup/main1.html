@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콤퍼넌트_지역콤퍼넌트_템플릿</title>
+    
+    <!-- 오픈소스  -->
+    <script src="./js/lib/jquery.min.js"></script>    
+    <script src="./vue/lib/vue.js"></script>
+
+    <style>
+     
+    </style>
+
+</head>
+<body>
+<div id="wrap">
+   
+   <div id="tt">
+       <h2>사용자 목록</h2>
+
+       <ul>
+           <ex-comp1 v-for='item in userData' v-bind:pdata='item'></ex-comp1>
+       </ul>
+
+       <h2>상품 목록</h2>
+
+       <ol>
+            <ex-comp2 v-for='item in tData' v-bind:pdata2='item'></ex-comp2>
+       </ol>
+   </div>
+    
+
+   <script>
+
+       var exComp1 = {
+           props:['pdata'],
+           template: '<li> 사용자계정 : {{pdata.id}}, 이름 : {{pdata.name}} </li>'
+       }
+
+       var exComp2 = {
+           props:['pdata2'],
+           template: '<li> 물품코드 : {{pdata2.tx}}, 물품명 : {{pdata2.t2}} </li>'
+       }
+
+       var test01 = new Vue({
+         el : '#tt',
+         data :{
+            userData:[
+                {id:'user01', pw:'pw01',name:'김사원'},
+                {id:'user02', pw:'pw02',name:'정대리'},
+                {id:'user03', pw:'pw03',name:'박대리'},
+                {id:'user04', pw:'pw04',name:'이사원'},
+                {id:'user05', pw:'pw05',name:'서과장'}
+
+            ],
+            tData:[
+                {tx:'p01',t2:'티슈'},
+                {tx:'l01',t2:'가위'},
+                {tx:'v01',t2:'풀'},
+                {tx:'u01',t2:'볼펜'}
+
+            ]
+         },
+         components:{
+             'ex-comp1':exComp1,
+             'ex-comp2':exComp2
+         }
+       });
+   </script>
+</div>
+</body>
+</html>
